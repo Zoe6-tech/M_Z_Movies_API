@@ -33,7 +33,7 @@ class Database//定义一个类
      //this two line take care of database connection
     $dsn='mysql:'.http_build_query($db_dsn,'',';');//change
     $this->conn=new PDO($dsn,$this->username, $this->password);//pass all info to PDO, save to conn,$conn is public 
-    echo "Connected successfully"; 
+    //echo "Connected database successfully"; 
     }catch(PDOException $exception){
        //hell php how i want do deal with error
        echo json_encode(
