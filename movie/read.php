@@ -34,7 +34,7 @@ $movie=new Movie($db_connector);//movie take database connector
   }elseif(isset($_GET['genre'])){
        // c.  /movie/read.php?genre=comedy ==> return all comedy movies
        //$results=$movie->getMovieByGenre($_GET['genre']);
-
+       $results = $movie->getMovieByGenre($_GET['genre']);
   }else{
        // a.  /movie/read.php=> return all movies
        $results=$movie->getMovies();

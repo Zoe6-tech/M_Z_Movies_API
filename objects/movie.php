@@ -16,14 +16,27 @@ class Movie{
     
     public function getMovies(){
         //TODP: this will return all movies
-    //     $query='SELECT * FROM `tbl_movies`';
-    //     $stmt=$this->conn->prepare($query);//statement
-    //     $stmt->execute();
-    //     return $stmt->fetchALL(PDO::FETCH_ASSOC);
-    // }
+        $query='SELECT * FROM `tbl_movies`';
+        $stmt=$this->conn->prepare($query);//statement
+        $stmt->execute();
+        return $stmt->fetchALL(PDO::FETCH_ASSOC);
+    }
 
     public function getMovieByGenre($genre){
         //TODO: this will retuen moves that under give genre, maybe 7 moives under comedy
+        //SELECT m.*,GROUP_CONCAT(g.genre_name) as genre_name FROM `tbl_movies`as m left join `tbl_mov_genre` as mg on mg.movies_id = m.movies_id left join `tbl_genre` as g on mg.genre_id = g.genre_id WHERE g.genre_name="action" GROUP by m.movies_id 
+        $query ='SELECT m.*,GROUP_CONCAT(g.genre_name) as genre_name';
+        $query .=' FROM `tbl_movies`as m  ';
+        $query .=' left join `tbl_mov_genre` as mg on mg.movies_id = m.movies_id';
+        $query .=' left join `tbl_genre` as g on mg.genre_id = g.genre_id';
+        $query .=' WHERE g.genre_name= "'.$genre.'"' ;
+        $query .=' GROUP by m.movies_id';
+        // echo $query;
+        // exit;
+        $stmt=$this->conn->prepare($query);//statement
+        $stmt->execute();
+        return $stmt->fetchALL(PDO::FETCH_ASSOC);
+
     }
 
     public function getMovieByID($id){
