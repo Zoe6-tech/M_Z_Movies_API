@@ -1,0 +1,8 @@
+dev
+1 can we reuse the common table name in movie.php?? {checked => movie.php 8-10} 
+2 turn off the JSON_PRETTY_PRINT,user too many data size
+
+pm
+1 genre into is missing from the movie list and single movie endpoint? {checked => public function getMovies() getMovieByID()}
+2 search genre by approximate match?  like comedy->com,come,comed....
+   $query .=' WHERE g.genre_name LIKE "%'.$genre.'%"' ;
