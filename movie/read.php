@@ -1,7 +1,7 @@
 <?php
 //this is debugging line
-ini_set('display_errors','On');
-ini_set('display_errors',1);
+// ini_set('display_errors','On');
+// ini_set('display_errors',1);
 
 
 //for user 
@@ -10,7 +10,7 @@ header("Content-Type:application/json; charset=UTF-8");
 // $results=[
 //     'test1'=>'test_value'
 // ];
-$results=[];
+
 //1. include database and objects
 #test database connection
 include_once '../config/database.php';//load database coonnection
@@ -44,5 +44,5 @@ $movie=new Movie($db_connector);//movie take database connector
 
 // OR echo(json_encode($results));
 //remove JSON_PRETTY_PRINT after test, which data size bag
-echo json_encode($results, JSON_PRETTY_PRINT);
+echo json_encode($results);
 exit;
